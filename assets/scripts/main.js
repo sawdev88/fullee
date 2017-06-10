@@ -15,6 +15,16 @@ $(function () {
     $('.open-toolbar').fadeIn('fast');
   })
 
+  // Display edit control title
+  $('.controls .control').on('mouseover', function () {
+    var controlTitle = $(this).data('title');
+    $('.control-title h4').text(controlTitle);
+  })
+  .on('mouseleave', function () {
+    $('.control-title h4').text('');
+  })
+
+  // Edit bar Controls
   $('.hide-logo').on('click', function () {
     $(this).toggleClass('selected');
     $('.landing-logo').toggleClass('hide');
