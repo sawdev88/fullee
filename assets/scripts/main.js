@@ -1,6 +1,14 @@
 $(function () {
   var videoCount = videos.length;
   var randomVideo = Math.floor(Math.random() * videoCount);
+  var downloadReady = false;
+  var currentTitle = videos[randomVideo].title;
+  var currentSrc = videos[randomVideo].src;
+
+  var setDownloadLink = function (title, src) {
+    $('.download-video').attr('download', title);
+    $('.download-video').attr('href', 'assets/video/' + src);
+  }
 
   // Landing Video //
   // Show Edit Toolbar
@@ -30,14 +38,19 @@ $(function () {
     $('.landing-logo').toggleClass('hide');
   })
 
+  //Set Download link
+  setDownloadLink(currentTitle, currentSrc)
+
   $('.random-icon').on('click', function () {
     randomVideo = Math.floor(Math.random() * videoCount);
     $('.landing-video video').attr('src', 'assets/video/' + videos[randomVideo].src)
     $('.landing-title').text(videos[randomVideo].title)
+
+    setDownloadLink(videos[randomVideo].title, videos[randomVideo].src)
   })
 
   // Display random video onload
-  $('.landing-video video').attr('src', 'assets/video/' + videos[randomVideo].src)
-  $('.landing-title').text(videos[randomVideo].title)
+  $('.landing-video video').attr('src', 'assets/video/' + currentSrc);
+  $('.landing-title').text(currentTitle);
 
 })
