@@ -1,3 +1,96 @@
 body {
-  
+  background: rgba(80,80,80,.5);
+  font-family: 'Overpass', sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 1vw; }
+
+h1 {
+  color: #fff;
+  font-size: 6rem;
+  font-family: 'Vibur', cursive;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
+
+// Temp for full screen landing
+.full-screen {
+  height: 100vh;
+}
+
+.border {
+  border: 1rem solid #fff;
+  padding: 2rem 4rem;
+}
+
+// Global
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ease {
+  transition: .3s ease-in-out;
+}
+
+.auto-size {
+  width: 24rem !important;
+  height: auto !important;
+  padding: 1.75rem;
+}
+
+// Body
+.ease.fa {
+  font-size: 2rem;
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  color: rgba(255,255,255,.4);
+  z-index: 11;
+
+  &:hover {
+    color: rgba(255,255,255,.8);
+    cursor: pointer;
+  }
+}
+
+.info-panel {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+  background: rgba(200,200,200,.5);
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  display: inline-block;
+
+  .info-container {
+    display: none;
+  }
+}
+
+.below-logo {
+  color: #fff;
+  font-size: 2.75rem;
+  margin: 0;
+  text-align: right;
+}
+
+@media (max-width: 1000px) {
+  html {font-size: 1.25vw;}
+}
+
+@media (max-width: 600px) {
+  html {font-size: 2.5vw;}
 }
