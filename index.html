@@ -11,27 +11,36 @@
   <body>
 
     <main>
-      <div class="center full-screen">
-        <i class="ease fa fa-dot-circle-o info" aria-hidden="true"></i>
-        <div class="info-panel ease">
-          <div class="info-container">
-            <h3>Fulls is a free background video library. City, Nature, People, Events, you name it: we'll have it. Coming soon.</h3>
+      <section class="landing-video">
+        <div class="edit-toolbar ease">
+          <div class="logo"><h1>Fulls.</h1></div>
+
+          <div class="controls">
+            <i class="control hide-logo white-hover fa fa-window-close-o" aria-hidden="true"></i>
+            <i class="control white-hover ease fa fa-archive" aria-hidden="true"></i>
+            <i class="control white-hover ease fa fa-archive" aria-hidden="true"></i>
+            <i class="control random-icon white-hover fa fa-random" aria-hidden="true"></i>
           </div>
+
+          <i class="edit-icon white-hover close-toolbar ease fa fa-close" aria-hidden="true"></i>
         </div>
 
-        <div class="container">
-          <div class="border">
-            <h1>Fulls.</h1>
-          </div>
-          <h2 class="below-logo">coming soon...</h2>
+        <div class="center full-screen landing-logo">
+          <h1>Fulls.</h1>
         </div>
-      </div>
+
+        <i class="edit-icon white-hover open-toolbar ease fa fa-pencil" aria-hidden="true"></i>
+        <video class="full-screen" src loop autoplay muted></video>
+        <i class="fa white-hover ease fa-chevron-down down" aria-hidden="true"></i>
+        <h2 class="landing-title"></h2>
+      </section>
     </main>
 
   </body>
 
   <footer>
-    <script src="https://use.fontawesome.com/09efc92c6d.js"></script>
+    <script src="https://use.fontawesome.com/0b488e2512.js"></script>
+    <script src="./assets/scripts/videoList.js" charset="utf-8"></script>
     <script src="./assets/scripts/main.js" charset="utf-8"></script>
   </footer>
 </html>
