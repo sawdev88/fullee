@@ -67,6 +67,25 @@ h4 {
   display: none;
 }
 
+.btn {
+  padding: 1rem 2rem;
+  border-radius: 3px;
+  font-size: 1rem;
+  margin: 0 .5rem;
+  background: rgba(10,14,61, .5);
+  color: #fff;
+  border: none;
+
+  i {
+    padding-left: 1rem;
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: rgba(10,14,61, .7);
+  }
+}
+
 // Landing Video
 .landing-video {
   position: relative;
@@ -132,6 +151,50 @@ h4 {
     z-index: 2;
   }
 
+  // Responsive Menu
+  .responsive-toolbar {
+    position: absolute;
+    top: 6rem;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    background: rgba(0,0,0,.4);
+    z-index: 2;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 2rem 0;
+    text-align: center;
+
+    .responsive-container {
+      margin-bottom: 1rem;
+      padding: .5rem 0;
+      display: none;
+
+      i {
+        display: block;
+        color: #fff;
+        font-size: 6rem;
+      }
+
+      &:hover {
+        background: rgba(0,0,0,.6);
+        cursor: pointer;
+      }
+    }
+
+    .selected-device {
+      background: rgba(0,0,0,.9);
+
+      &:hover {
+        background: rgba(0,0,0,.9);
+      }
+    }
+  }
+
+  .show-menu {
+    width: 14rem;
+  }
+
   .landing-logo {
     position: absolute;
     z-index: 1;
@@ -174,6 +237,49 @@ h4 {
 
   .video-list {
     height: 80rem;
+    width: 75%;
+    margin: 2rem auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  .video-item {
+    background: rgba(10,14,61, .5);
+    height: 18rem;
+    width: 30%;
+  }
+
+  .selected-video-container {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    background: rgba(80,80,80,.9);
+    z-index: 2;
+    overflow: hidden;
+    text-align: center;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+
+  .selected-video-title {
+    text-align: left;
+    color: rgba(255,255,255,.8);
+    margin-bottom: .5rem;
+    font-size: 2rem;
+  }
+
+  .selected-video-showing {
+    padding: 3rem 4rem;
+    width: 50vw;
+  }
+
+  .selected-video-player {
+    height: auto;
+    width: 100%;
+    margin-bottom: .5rem;
   }
 }
 

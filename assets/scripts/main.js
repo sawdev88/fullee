@@ -21,6 +21,9 @@ $(function () {
   $('.close-toolbar').on('click', function () {
     $('.edit-toolbar').css('top', '-6rem');
     $('.open-toolbar').fadeIn('fast');
+    $('.responsive-toolbar').removeClass('show-menu');
+    $('.responsive-container').css('display', 'none');
+    $('.toggle-responsive').removeClass('selected');
   })
 
   // Display edit control title
@@ -38,6 +41,28 @@ $(function () {
     $('.landing-logo').toggleClass('hide');
   })
 
+  $('.toggle-responsive').on('click', function () {
+    $(this).toggleClass('selected');
+    $('.responsive-container').toggle(500);
+    $('.responsive-toolbar').toggleClass('show-menu');
+    $('.down').toggle();
+  })
+
+  $('.responsive-container').on('click', function () {
+    var deviceWidth = $(this).data('width');
+    var deviceHeight = $(this).data('height');
+
+    $(this).addClass('selected-device').siblings().removeClass('selected-device');
+    $('.callout-video').css({
+      position: 'relative',
+      background: 'red',
+      height: deviceHeight,
+      width: deviceWidth,
+      minHeight: deviceHeight,
+      minWidth: deviceWidth
+    })
+  })
+
   //Set Download link
   setDownloadLink(currentTitle, currentSrc)
 
@@ -52,5 +77,42 @@ $(function () {
   // Display random video onload
   $('.landing-video video').attr('src', 'assets/video/' + currentSrc);
   $('.landing-title').text(currentTitle);
+
+  // Display videos
+  $.each(videos, function (k, v) {
+    $('.video-list').append(
+      '<div class="video-item" data-src="' + v.src + '" data-title="' + v.title + '">' +
+      v.title +
+      '</div>'
+    )
+  })
+
+  // Selected Video
+  $('.video-item').on('click', function (e) {
+    var selectedVideoTitle = $(this).data('title');
+    var selectedVideoSrc = $(this).data('src');
+
+    e.stopPropagation();
+    $('.selected-video-container').addClass('selected-video-showing');
+    $('.selected-video-player').attr('src', 'assets/video/' + selectedVideoSrc);
+    $('.selected-video-player').attr('data-title', selectedVideoTitle);
+    $('.selected-video-title').text(selectedVideoTitle);
+  })
+
+  $('body').on('click', function () {
+    $('.selected-video-container').removeClass('selected-video-showing');
+  })
+
+  $('.set-current-btn').on('click', function () {
+    var currentVideo = $('.selected-video-player').attr('src');
+    var currnetTitle = $('.selected-video-player').attr('data-title');
+
+    $('.landing-video video').attr('src', currentVideo)
+    $('.landing-title').text(currnetTitle)
+
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    setDownloadLink(currnetTitle, currentVideo)
+  })
+
 
 })
