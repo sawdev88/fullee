@@ -7,7 +7,28 @@ $(function () {
 
   var setDownloadLink = function (title, src) {
     $('.download-video').attr('download', title);
-    $('.download-video').attr('href', 'assets/video/' + src);
+    $('.download-video').attr('href', '../src/video/' + src);
+  }
+
+  var filterVideos = function (filter) {
+    $('.video-item').fadeOut();
+
+    if (filter !== 'all') {
+      $('.video-item').each(function (i) {
+        if ($(this).data('tags') === filter) {
+          $(this).fadeIn();
+        }
+      })
+    } else {
+      $('.video-item').fadeIn();
+    }
+
+    $('.dropdown-selected').data('selected-tag');
+  }
+
+
+  var toggleDropdown = function (div) {
+    $(div).toggleClass('dropdown-showing');
   }
 
   // Landing Video //
@@ -68,20 +89,20 @@ $(function () {
 
   $('.random-icon').on('click', function () {
     randomVideo = Math.floor(Math.random() * videoCount);
-    $('.landing-video video').attr('src', 'assets/video/' + videos[randomVideo].src)
+    $('.landing-video video').attr('src', '../src/video/' + videos[randomVideo].src)
     $('.landing-title').text(videos[randomVideo].title)
 
     setDownloadLink(videos[randomVideo].title, videos[randomVideo].src)
   })
 
   // Display random video onload
-  $('.landing-video video').attr('src', 'assets/video/' + currentSrc);
+  $('.landing-video video').attr('src', '../src/video/' + currentSrc);
   $('.landing-title').text(currentTitle);
 
   // Display videos
   $.each(videos, function (k, v) {
     $('.video-list').append(
-      '<div class="video-item" data-src="' + v.src + '" data-title="' + v.title + '">' +
+      '<div class="video-item" data-tags="' + v.tags + '" data-src="' + v.src + '" data-title="' + v.title + '">' +
       v.title +
       '</div>'
     )
@@ -94,7 +115,7 @@ $(function () {
 
     e.stopPropagation();
     $('.selected-video-container').addClass('selected-video-showing');
-    $('.selected-video-player').attr('src', 'assets/video/' + selectedVideoSrc);
+    $('.selected-video-player').attr('src', '../src/video/' + selectedVideoSrc);
     $('.selected-video-player').attr('data-title', selectedVideoTitle);
     $('.selected-video-title').text(selectedVideoTitle);
   })
@@ -114,5 +135,18 @@ $(function () {
     setDownloadLink(currnetTitle, currentVideo)
   })
 
+  // dropdown
+  $('.dropdown-selected').on('click', function () {
+    $('.dropdown-options').toggleClass('dropdown-showing');
+  })
+
+  $('.dropdown-options li').on('click', function () {
+    $('.dropdown-selected').text($(this).text());
+    $('.dropdown-selected').attr('data-selected-tag', $(this).data('tag'));
+
+    // Dropdown tag logic
+    filterVideos($('.dropdown-selected').attr('data-selected-tag'));
+    toggleDropdown('.dropdown-options')
+  })
 
 })
