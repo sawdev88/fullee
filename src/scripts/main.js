@@ -15,7 +15,7 @@ $(function () {
 
     if (filter !== 'all') {
       $('.video-item').each(function (i) {
-        if ($(this).data('tags') === filter) {
+        if ($(this).data('tags').match(filter)) {
           $(this).fadeIn();
         }
       })
@@ -102,7 +102,7 @@ $(function () {
   // Display videos
   $.each(videos, function (k, v) {
     $('.video-list').append(
-      '<div class="video-item" data-tags="' + v.tags + '" data-src="' + v.src + '" data-title="' + v.title + '">' +
+      '<div class="video-item" style="background: url(../src/img/' + v.placeholder + ') no-repeat center center / cover;" data-tags="' + v.tags + '" data-src="' + v.src + '" data-title="' + v.title + '"">' +
       v.title +
       '</div>'
     )

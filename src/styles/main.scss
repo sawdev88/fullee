@@ -1,3 +1,5 @@
+// compileCompressed: ../../build/main.min.css;
+
 body {
   font-family: 'Overpass', sans-serif;
   box-sizing: border-box;
@@ -72,7 +74,7 @@ h4 {
   border-radius: 3px;
   font-size: 1rem;
   margin: 0 .5rem;
-  background: rgba(10,14,61, .5);
+  background: rgba(10,14,61, .6);
   color: #fff;
   border: none;
 
@@ -82,7 +84,7 @@ h4 {
 
   &:hover {
     cursor: pointer;
-    background: rgba(10,14,61, .7);
+    background: rgba(10,14,61, 1);
   }
 }
 
@@ -91,9 +93,10 @@ h4 {
   position: relative;
 
   .dropdown-selected {
-    background: red;
+    background: #fff;
+    color: #333;
     display: block;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     padding: .5rem 1rem;
   }
 
@@ -101,7 +104,7 @@ h4 {
     list-style: none;
     padding: 0;
     margin: 0;
-    background: yellow;
+    background: #eee;
     position: absolute;
     width: 100%;
     overflow-y: scroll;
@@ -109,8 +112,8 @@ h4 {
 
     li {
       padding-left: 1.25rem;
-      border-bottom: 1px solid red;
-      font-size: 1.5rem;
+      border-bottom: 1px solid #aaa;
+      font-size: 1.25rem;
       line-height: 3rem;
 
       &:last-of-type {
@@ -274,19 +277,25 @@ h4 {
     background: rgba(10,14,61, .75);
     display: flex;
     align-items: center;
+    padding: 0 14%;
+    justify-content: flex-end;
+
+    h2 {
+      color: #ccc;
+      margin-right: 1.5rem;
+    }
   }
 
   .video-list {
     height: 80rem;
     width: 75%;
-    margin: 2rem auto;
+    margin: 2rem auto 0;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
   }
 
   .video-item {
-    background: rgba(10,14,61, .5);
     height: 18rem;
     width: 30%;
   }
@@ -297,7 +306,7 @@ h4 {
     top: 50%;
     transform: translateY(-50%);
     width: 0;
-    background: rgba(80,80,80,.9);
+    background: rgba(64,64,64,1);
     z-index: 2;
     overflow: hidden;
     text-align: center;
@@ -345,7 +354,8 @@ h4 {
 
   .footer-details {
     height: 4rem;
-    background: rgba(0,0,0,.2);
+    background: #ccc;
+    color: #fff;
     position: absolute;
     bottom: 0;
     left: 0;
