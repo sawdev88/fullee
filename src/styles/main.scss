@@ -1,5 +1,9 @@
 // compileCompressed: ../../build/main.min.css;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Overpass', sans-serif;
   box-sizing: border-box;
@@ -25,8 +29,13 @@ h1 {
   margin: .7rem 0 0 3rem;
 }
 
+h2 {
+  font-size: 3rem;
+  color: #333;
+}
+
 h3 {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 h4 {
@@ -88,12 +97,18 @@ h4 {
   }
 }
 
+.align-right {
+  position: absolute;
+  right: 14%;
+}
+
 .dropdown {
   width: 16rem;
   position: relative;
 
   .dropdown-selected {
-    background: #fff;
+    background: #efefef;
+    border-radius: 5px;
     color: #333;
     display: block;
     font-size: 1.5rem;
@@ -109,6 +124,7 @@ h4 {
     width: 100%;
     overflow-y: scroll;
     height: 0;
+    z-index: 11;
 
     li {
       padding-left: 1.25rem;
@@ -267,37 +283,46 @@ h4 {
 
 // Container
 #container {
-  background: #fff;
+  background: url('../src/img/bg.png');
   position: relative;
   z-index: 1;
 
   // Nav
   .filters {
-    height: 6rem;
-    background: rgba(10,14,61, .75);
-    display: flex;
-    align-items: center;
-    padding: 0 14%;
-    justify-content: flex-end;
+      display: flex;
+      align-items: center;
+      padding: 2rem 14% 0;
 
-    h2 {
-      color: #ccc;
-      margin-right: 1.5rem;
+      h3{
+        color: #ccc;
+        margin-right: 1.5rem;
+      }
     }
-  }
 
   .video-list {
-    height: 80rem;
     width: 75%;
     margin: 2rem auto 0;
+    padding: 0 0 8rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
   }
 
   .video-item {
-    height: 18rem;
+    height: 16rem;
+    margin: 1.5rem 0;
     width: 30%;
+    position: relative;
+    border-radius: 5px;
+
+    span {
+      position: absolute;
+      bottom: .5rem;
+      left: 1.5rem;
+      font-size: 1.25rem;
+      color: rgba(255,255,255,.8);
+      text-shadow: 2px 2px #333;
+    }
   }
 
   .selected-video-container {

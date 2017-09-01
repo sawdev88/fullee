@@ -1,3 +1,13 @@
+// TODO:
+// [ ] fix filter reload flash
+// [ ] mobile view
+// [ ] generate css
+// [ ] responsive
+
+// SCALE:
+// [ ] Add gradient and image selection
+
+
 $(function () {
   var videoCount = videos.length;
   var randomVideo = Math.floor(Math.random() * videoCount);
@@ -103,7 +113,7 @@ $(function () {
   $.each(videos, function (k, v) {
     $('.video-list').append(
       '<div class="video-item" style="background: url(../src/img/' + v.placeholder + ') no-repeat center center / cover;" data-tags="' + v.tags + '" data-src="' + v.src + '" data-title="' + v.title + '"">' +
-      v.title +
+      '<span>' + v.title + '</span>' +
       '</div>'
     )
   })
