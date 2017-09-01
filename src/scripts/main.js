@@ -1,11 +1,13 @@
 // TODO:
-// [ ] fix filter reload flash
-// [ ] mobile view
-// [ ] generate css
-// [ ] responsive
+// [ ] Fix filter reload flash
+// [ ] Fix Selected Video Animation
+// [ ] Set download logic on Selected Video Container
+// [ ] Set generate code logic on Selected Video Container
+// [ ] Set mobile view logic on toolbar
+// [ ] Responsive
 
 // SCALE:
-// [ ] Add gradient and image selection
+// [ ] Add gradient bg and image bg
 
 
 $(function () {
@@ -39,6 +41,11 @@ $(function () {
 
   var toggleDropdown = function (div) {
     $(div).toggleClass('dropdown-showing');
+  }
+
+  // Hide Selected Video Container
+  var hideVideoContainer = function () {
+    $('.selected-video-container').removeClass('selected-video-showing');
   }
 
   // Landing Video //
@@ -131,7 +138,12 @@ $(function () {
   })
 
   $('body').on('click', function () {
-    $('.selected-video-container').removeClass('selected-video-showing');
+    hideVideoContainer();
+  })
+
+  // Selected Video Container
+  $('.selected-video-container').on('click', function (e) {
+    e.stopPropagation();
   })
 
   $('.set-current-btn').on('click', function () {
@@ -143,7 +155,9 @@ $(function () {
 
     $("html, body").animate({ scrollTop: 0 }, "slow");
     setDownloadLink(currnetTitle, currentVideo)
+    hideVideoContainer();
   })
+
 
   // dropdown
   $('.dropdown-selected').on('click', function () {
