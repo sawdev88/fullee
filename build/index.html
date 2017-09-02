@@ -11,6 +11,7 @@
   <body>
 
     <section class="landing-video">
+      <div class="spinner"></div>
       <div class="edit-toolbar ease">
         <div class="logo"><h1>Fullee.</h1></div>
 
@@ -67,19 +68,21 @@
     </section>
 
     <main id="container">
-      <nav class="filters">
-        <div class="">
-          <h2>VIDEOS</h2>
+      <nav class="filters video-filters">
+        <div class="themes">
+          <button class="btn active" data-theme="video">Videos</button>
+          <button class="btn" data-theme="image">Images</button>
+          <button class="btn" data-theme="gradient">Gradients</button>
         </div>
         <div class="align-right">
           <div class="dropdown">
             <h4 class="dropdown-selected" data-for="tag" data-selected-tag="all">Tags:</h4>
             <ul class="dropdown-options tags-dropdown ease">
-              <li data-tag="all">none</li>
+              <li data-tag="all">view all</li>
               <li data-tag="ocean">ocean</li>
-              <li data-tag="mountains">mountains</li>
+              <li data-tag="mountain">mountain</li>
               <li data-tag="nature">nature</li>
-              <li data-tag="boats">boats</li>
+              <li data-tag="water">water</li>
             </ul>
           </div>
         </div>
@@ -88,6 +91,7 @@
       <div class="video-list"></div>
       <div class="selected-video-container ease">
         <h2 class="selected-video-title">#</h2>
+        <div class="spinner"></div>
         <video class="selected-video-player" src="#" data-title="#" autoplay loop muted></video>
         <button class="ease btn gen-code-btn">Get The Code <i class="fa fa-code" aria-hidden="true"></i></button>
         <button class="ease btn set-current-btn">Set As Current <i class="fa fa-dot-circle-o" aria-hidden="true"></i></button>

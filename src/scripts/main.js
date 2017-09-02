@@ -1,6 +1,8 @@
 // TODO:
 // [ ] Fix filter reload flash
-// [ ] Fix Selected Video Animation
+// [x] Fix Selected Video Animation
+// [x] Add spinner to Selected Video Container
+// [ ] Add spinner to Landing Video
 // [ ] Set download logic on Selected Video Container
 // [ ] Set generate code logic on Selected Video Container
 // [ ] Set mobile view logic on toolbar
@@ -17,22 +19,28 @@ $(function () {
   var currentTitle = videos[randomVideo].title;
   var currentSrc = videos[randomVideo].src;
 
+  // Load animations
+  $('.landing-logo').css({
+    'opacity': 1,
+    'marginTop': 0
+  });
+
   var setDownloadLink = function (title, src) {
     $('.download-video').attr('download', title);
     $('.download-video').attr('href', '../src/video/' + src);
   }
 
-  var filterVideos = function (filter) {
-    $('.video-item').fadeOut();
+  var filterVideos = function (ele, filter) {
+    ele.fadeOut();
 
     if (filter !== 'all') {
-      $('.video-item').each(function (i) {
+      ele.each(function (i) {
         if ($(this).data('tags').match(filter)) {
           $(this).fadeIn();
         }
       })
     } else {
-      $('.video-item').fadeIn();
+      ele.fadeIn();
     }
 
     $('.dropdown-selected').data('selected-tag');
@@ -48,12 +56,14 @@ $(function () {
     $('.selected-video-container').removeClass('selected-video-showing');
   }
 
+
   // Landing Video //
   // Show Edit Toolbar
   $('.open-toolbar').on('click', function () {
     $('.edit-toolbar').css('top', 0);
     $(this).fadeOut('fast');
   })
+
 
   // Hide Toolbar
   $('.close-toolbar').on('click', function () {
@@ -64,6 +74,7 @@ $(function () {
     $('.toggle-responsive').removeClass('selected');
   })
 
+
   // Display edit control title
   $('.controls .control').on('mouseover', function () {
     var controlTitle = $(this).data('title');
@@ -72,6 +83,7 @@ $(function () {
   .on('mouseleave', function () {
     $('.control-title h4').text('');
   })
+
 
   // Edit bar Controls
   $('.hide-logo').on('click', function () {
@@ -101,6 +113,7 @@ $(function () {
     })
   })
 
+
   //Set Download link
   setDownloadLink(currentTitle, currentSrc)
 
@@ -112,18 +125,21 @@ $(function () {
     setDownloadLink(videos[randomVideo].title, videos[randomVideo].src)
   })
 
+
   // Display random video onload
   $('.landing-video video').attr('src', '../src/video/' + currentSrc);
   $('.landing-title').text(currentTitle);
 
+
   // Display videos
   $.each(videos, function (k, v) {
     $('.video-list').append(
-      '<div class="video-item" style="background: url(../src/img/' + v.placeholder + ') no-repeat center center / cover;" data-tags="' + v.tags + '" data-src="' + v.src + '" data-title="' + v.title + '"">' +
+      '<div class="video-item ease" style="background: url(../src/img/' + v.placeholder + ') no-repeat center center / cover;" data-tags="' + v.tags + '" data-src="' + v.src + '" data-title="' + v.title + '"">' +
       '<span>' + v.title + '</span>' +
       '</div>'
     )
   })
+
 
   // Selected Video
   $('.video-item').on('click', function (e) {
@@ -140,6 +156,7 @@ $(function () {
   $('body').on('click', function () {
     hideVideoContainer();
   })
+
 
   // Selected Video Container
   $('.selected-video-container').on('click', function (e) {
@@ -159,6 +176,14 @@ $(function () {
   })
 
 
+  // Theme filters
+  $('.themes button').on('click', function () {
+    if ($(this).data('theme') !== 'video') {
+      alert($(this).data('theme') + 's coming soon')
+    }
+  })
+
+
   // dropdown
   $('.dropdown-selected').on('click', function () {
     $('.dropdown-options').toggleClass('dropdown-showing');
@@ -169,7 +194,7 @@ $(function () {
     $('.dropdown-selected').attr('data-selected-tag', $(this).data('tag'));
 
     // Dropdown tag logic
-    filterVideos($('.dropdown-selected').attr('data-selected-tag'));
+    filterVideos($('.video-item'), $('.dropdown-selected').attr('data-selected-tag'));
     toggleDropdown('.dropdown-options')
   })
 

@@ -45,7 +45,7 @@ var videos = [
     title: 'Test Title 2',
     src: 'test1.mp4',
     placeholder: 'test1_placeholder.png',
-    tags: ['mountains', 'nature']
+    tags: ['mountain', 'nature']
   },
   {
     title: 'Test Title 3',
